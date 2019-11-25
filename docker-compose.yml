@@ -5,21 +5,33 @@ services:
       context: ./Docker/MySQL
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_db
+      MYSQL_DATABASE: gorest_db
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
     container_name: gorest_db
     ports:
       - "3306:3306"
     tty: true
+    networks:
+      - lde_general
   app:
     build:
       context: ./
     volumes:
       - ./:/go/src/github.com/dogukanayd/go-rest
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_HOST=tcp(gorest_db:3306)
+      - DB_NAME=gorest_db
     container_name: gorest_app
     ports:
       - "8080:8080"
     tty: true
     depends_on:
       - db
+    networks:
+      - lde_general
+networks:
+  lde_general:
+    external: true
