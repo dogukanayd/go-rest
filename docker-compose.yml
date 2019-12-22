@@ -1,5 +1,15 @@
 version: '2.1'
 services:
+  redis:
+    build:
+      context: ./Docker/Redis
+    environment:
+      REDIS_HOST: redis:6379
+    container_name: gorest_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - lde_general
   db:
     build:
       context: ./Docker/MySQL
@@ -24,6 +34,7 @@ services:
       - MYSQL_PASSWORD=root
       - MYSQL_HOST=tcp(gorest_db:3306)
       - DB_NAME=gorest_db
+      - REDIS_HOST=gorest_redis:6379
     container_name: gorest_app
     ports:
       - "8080:8080"

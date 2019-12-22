@@ -23,6 +23,22 @@
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:d0d067915c49fe141c73ce159bcc408796e4f3a9d5ad0a972cb2dbde1dc1ae4f"
+  name = "github.com/go-redis/redis"
+  packages = [
+    ".",
+    "internal",
+    "internal/consistenthash",
+    "internal/hashtag",
+    "internal/pool",
+    "internal/proto",
+    "internal/util",
+  ]
+  pruneopts = ""
+  revision = "7f69d5e32072d151eb6936cbe2306413e8117488"
+  version = "v6.15.6"
+
+[[projects]]
   digest = "1:e692d16fdfbddb94e9e4886aaf6c08bdbae5cb4ac80651445de9181b371c6e46"
   name = "github.com/go-sql-driver/mysql"
   packages = ["."]
@@ -134,6 +150,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/gin-gonic/gin",
+    "github.com/go-redis/redis",
     "upper.io/db.v3/lib/sqlbuilder",
     "upper.io/db.v3/mysql",
   ]
