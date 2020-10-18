@@ -2,14 +2,14 @@ package controllers
 
 import (
 	"github.com/dogukanayd/go-rest/app/api/responses"
-	"github.com/dogukanayd/go-rest/app/healt"
+	"github.com/dogukanayd/go-rest/app/health"
 	"github.com/gin-gonic/gin"
 	"log"
 )
 
 // Health handles health requests
 func Health(ctx *gin.Context) {
-	h := healt.New().Check()
+	h := health.New().Check()
 
 	if h != nil {
 		log.Println(h)

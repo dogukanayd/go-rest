@@ -1,4 +1,4 @@
-package healt
+package health
 
 import (
 	"github.com/dogukanayd/go-rest/app/utils"
